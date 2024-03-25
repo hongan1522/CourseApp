@@ -4,7 +4,7 @@ from ckeditor.fields import RichTextField
 from cloudinary.models import CloudinaryField
 
 class User(AbstractUser):
-    pass
+    avatar = CloudinaryField()
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -20,6 +20,7 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ['-id']
 
 class Course(BaseModel):
     name = models.CharField(max_length=255)
